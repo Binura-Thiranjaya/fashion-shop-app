@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import AddProduct from './components/AddProduct';
+import UpdateProduct from './components/UpdateProduct';
+import DeleteProduct from './components/DeleteProduct';
+import SeasonSummary from './components/SeasonSummary';
+import TopUnitsSold from './components/TopUnitsSold';
+import RatingFilter from './components/RatingFilter';
+import ViewAllProducts from './components/ViewAllProducts';
+import ViewProductByName from './components/ViewProductByName';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <h1>Fashion Shop Dashboard</h1>
+        <nav>
+          <Link to="/add">Add Product</Link> | 
+          <Link to="/update">Update Product</Link> | 
+          <Link to="/delete">Delete Product</Link> | 
+          <Link to="/summary">Season Summary</Link> | 
+          <Link to="/top-units">Top Units Sold</Link> | 
+          <Link to="/rating-filter">Rating Filter</Link> | 
+          <Link to="/view-all">View All Products</Link> |
+          <Link to="/view-product">View Product</Link>
+
+
+        </nav>
+        <hr />
+        <Routes>
+          <Route path="/add" element={<AddProduct />} />
+          <Route path="/update" element={<UpdateProduct />} />
+          <Route path="/delete" element={<DeleteProduct />} />
+          <Route path="/summary" element={<SeasonSummary />} />
+          <Route path="/top-units" element={<TopUnitsSold />} />
+          <Route path="/rating-filter" element={<RatingFilter />} />
+          <Route path="/view-all" element={<ViewAllProducts />} />
+          <Route path="/view-product" element={<ViewProductByName />} />
+
+
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
